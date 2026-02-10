@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Password Generator</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <div class="window">
         <!-- macOS window buttons -->
         <div class="window-header">
             <div class="window-controls">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
+                <span class="dot red" id="closeBtn" data-title="Clear all"></span>
+                <span class="dot yellow" id="resetBtn" data-title="Reset length"></span>
+                <span class="dot green" id="copyBtn" data-title="Copy password"></span>
             </div>
         </div>
 
         <h2>Password Generator</h2>
 
-        <input type="number" id="length" placeholder="Password length (min 4)" min="4">
+        <input
+            type="number"
+            id="length"
+            placeholder="Password length (min 4)"
+            min="4"
+        >
 
         <button id="generate">Generate Password</button>
 
-        <input type="text" id="result" placeholder="Your secure password" readonly>
+        <input
+            type="text"
+            id="result"
+            placeholder="Your secure password"
+            readonly
+        >
     </div>
 
     <script src="popup.js"></script>
 </body>
-
 </html>

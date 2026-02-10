@@ -4,19 +4,19 @@
 
 body {
     margin: 0;
-    background: #f5f6f8;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Helvetica, Arial, sans-serif;
     width: 320px;
     padding: 15px;
+    background: #f5f6f8;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 Roboto, Helvetica, Arial, sans-serif;
 }
 
 .window {
     background: #ffffff;
     border-radius: 14px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     padding: 20px;
-    animation: fadeIn 0.3s ease-in-out;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    animation: fadeIn 0.25s ease-in-out;
 }
 
 /* macOS header */
@@ -29,31 +29,52 @@ body {
 .window-controls {
     display: flex;
     gap: 8px;
+    position: relative;
 }
 
 .dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    position: relative;
 }
 
-.red {
-    background: #ff5f56;
+.dot:hover {
+    transform: scale(1.15);
+    opacity: 0.85;
 }
 
-.yellow {
-    background: #ffbd2e;
+.dot::after {
+    content: attr(data-title);
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #111;
+    color: #fff;
+    font-size: 10px;
+    padding: 3px 6px;
+    border-radius: 4px;
+    opacity: 0;
+    white-space: nowrap;
+    pointer-events: none;
 }
 
-.green {
-    background: #27c93f;
+.dot:hover::after {
+    opacity: 1;
 }
+
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
 
 h2 {
     text-align: center;
-    margin: 10px 0 15px;
     font-size: 18px;
     font-weight: 600;
+    margin: 10px 0 15px;
     color: #111;
 }
 
@@ -64,7 +85,6 @@ input {
     border-radius: 8px;
     border: 1px solid #ddd;
     font-size: 14px;
-    transition: border 0.2s ease;
 }
 
 input:focus {
@@ -92,15 +112,14 @@ button:hover {
 }
 
 button:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(5px);
+        transform: translateY(6px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);

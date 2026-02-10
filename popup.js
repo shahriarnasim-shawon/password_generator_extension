@@ -1,9 +1,18 @@
-document.getElementById("generate").addEventListener("click", () => {
-    const length = parseInt(document.getElementById("length").value);
-    const result = document.getElementById("result");
+const generateBtn = document.getElementById("generate");
+const lengthInput = document.getElementById("length");
+const resultInput = document.getElementById("result");
+
+const closeBtn = document.getElementById("closeBtn");
+const resetBtn = document.getElementById("resetBtn");
+const copyBtn = document.getElementById("copyBtn");
+
+let lastPassword = "";
+
+generateBtn.addEventListener("click", () => {
+    const length = parseInt(lengthInput.value);
 
     if (!length || length < 4) {
-        result.value = "Length must be 4+";
+        resultInput.value = "Length must be 4+";
         return;
     }
 
@@ -22,16 +31,29 @@ document.getElementById("generate").addEventListener("click", () => {
     }
 
     password = password.split("").sort(() => 0.5 - Math.random()).join("");
-    result.value = password;
 
-    result.addEventListener("click", () => {
-        if (result.value) {
-            navigator.clipboard.writeText(result.value);
-            result.value = "Copied!";
-            setTimeout(() => {
-                result.value = password;
-            }, 800);
-        }
-    });
+    lastPassword = password;
+    resultInput.value = password;
+});
 
+/* macOS-style buttons behavior */
+
+closeBtn.addEventListener("click", () => {
+    lengthInput.value = "";
+    resultInput.value = "";
+    lastPassword = "";
+});
+
+resetBtn.addEventListener("click", () => {
+    lengthInput.value = "";
+});
+
+copyBtn.addEventListener("click", () => {
+    if (lastPassword) {
+        navigator.clipboard.writeText(lastPassword);
+        resultInput.value = "Copied!";
+        setTimeout(() => {
+            resultInput.value = lastPassword;
+        }, 800);
+    }
 });

@@ -1,12 +1,9 @@
 {
-    "manifest_version": 3,
-    "name": "Secure Password Generator",
-    "description": "Generate strong random passwords instantly",
-    "version": "1.0",
-    "action": {
-        "default_popup": "popup.html"
-    },
-    "icons": {
-        "128": "icon.png"
-    }
+  "manifest_version": 3,
+  "name": "Secure Password Generator",
+  "description": "Generate strong passwords instantly with a modern UI",
+  "version": "1.1",
+  "action": {
+    "default_popup": "popup.html"
+  }
 }
